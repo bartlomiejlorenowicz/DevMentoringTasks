@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Tablice17 {
+public class Zad17 {
 
     //Wprowadź poniższą mapę do programu. Program ma działać, tak jak poniżej:
     //-	wyświetla wszystkie klucze na konsoli (tzn. nazwy wszystkich albumów),
@@ -37,13 +37,21 @@ public class Tablice17 {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj nazwe albumu:");
-        String userInput = scanner.nextLine();
+        String albumName = scanner.nextLine();
+
+        boolean found = false;
         for (Map.Entry<String, String> entry : bands.entrySet()) {
-            if (entry.getKey().equals(userInput)) {
-                System.out.println("Wykonawca albumu " + userInput + " jest " + entry.getValue());
-            } else {
-                System.out.println("brak danych");
+            String albumKeyMap = entry.getKey();
+            String bandValueMap = entry.getValue();
+            if (albumKeyMap.equals(albumName)) {
+                System.out.println("Wykonawca albumu " + albumName + " jest " + bandValueMap);
+                found = true;
+                break;
             }
         }
+        if (!found) {
+            System.out.println("Brak danych");
+        }
+        scanner.close();
     }
 }

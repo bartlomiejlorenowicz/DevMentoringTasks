@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Tablice18 {
+public class Zad18 {
     // Zmodyfikuj kod z zadania 17 tak, aby możliwe było dodawanie i usuwanie przez użytkownika
     // informacji o nowych albumach do mapy.
     // Program ma zawierać proste menu.

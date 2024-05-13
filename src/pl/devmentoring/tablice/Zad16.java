@@ -2,7 +2,7 @@ package pl.devmentoring.tablice;
 
 import java.util.*;
 
-public class Tablice16 {
+public class Zad16 {
 
     //Utwórz mapę, która reprezentować będzie zestaw pięciu unikalnych imion wraz z przypisanym do nich numerem PESEL
     // (przechowywanym w formie Stringa). Następnie:
@@ -17,49 +17,46 @@ public class Tablice16 {
 
     public static void main(String[] args) {
 
-        Map<String, String> people = new HashMap<>();
-        people.put("Euzebiusz", "4567854");
-        people.put("Bogdan", "234554");
-        people.put("Robert", "4578654");
-        people.put("Ewa", "95667994");
-        people.put("Anna", "4275454");
+        People people = new People();
+        Map<String, String> peopleData = people.generateData();
 
         // sprawdzenie czy w mapie znajduje sie osoba o imienu Anna
-        if (people.containsKey("Anna")){
+        if (peopleData.containsKey("Anna")){
             System.out.println("mapa zawiera osobe o imieniu Anna");
         } else {
             System.out.println("mapa nie zawiera osobe o imieniu Anna");
         }
 
         // sprawdzenie czy wartosc w mapie zaczyna sie od cyfry 9
-        boolean containsValueStartsWith9 = false;
-        for (Map.Entry<String, String> entry : people.entrySet()) {
-            if (entry.getValue().startsWith("9")) {
-                containsValueStartsWith9 = true;
+        boolean containsValueWithFirstLetter = false;
+        String peselNumberFirstDigit = "9";
+        for (Map.Entry<String, String> entry : peopleData.entrySet()) {
+            String peselValue = entry.getValue();
+            if (peselValue.startsWith(peselNumberFirstDigit)) {
+                containsValueWithFirstLetter = true;
             }
         }
-        System.out.println("Czy mam zawiera wartosc, ktora zaczyna sie na 9?: " + containsValueStartsWith9);
+        System.out.println("Czy mapa zawiera wartosc, ktora zaczyna sie na 9?: " + containsValueWithFirstLetter);
 
         // usuwanie 2 elementow z mapy
-        people.remove("Anna");
-        people.remove("Robert");
+        peopleData.remove("Anna");
+        peopleData.remove("Robert");
 
         // sprawdzenie czy rozmiar listy jest rowny 3
-        if (people.size() == 3) {
+        if (peopleData.size() == 3) {
             System.out.println("The map’s size is correct.");
         } else {
             System.out.println("The map’s size is not correct.");
         }
 
         // jesli klucz o wartosci Euzebiusz istnieje, wyswietl jego wartosc
-        System.out.println(people.getOrDefault("Euzebiusz", "No such name!"));
+        System.out.println(peopleData.getOrDefault("Euzebiusz", "No such name!"));
 
         // sprawdzenie czy mapa jest pusta
-        if (people.isEmpty()) {
+        if (peopleData.isEmpty()) {
             System.out.println("Nothing to do here!");
         } else {
-            System.out.println("Rozmiar mapy: " + people.size());
+            System.out.println("Rozmiar mapy: " + peopleData.size());
         }
     }
-
 }
