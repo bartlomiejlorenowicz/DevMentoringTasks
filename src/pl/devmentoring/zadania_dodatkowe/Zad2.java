@@ -26,9 +26,6 @@ public class Zad2 {
 
     public static int[][] returnPairsOfIntegers(int[] arr) {
 
-        // sortowanie tablicy rosnaca
-        Arrays.sort(arr);
-
         // zliczenie ilosci wierszy, dla tablicy dwuwymiarowej
         int countRows = 0;
         for (int i = 0; i < arr.length; i++) {
